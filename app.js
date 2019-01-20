@@ -7,40 +7,65 @@ window.addEventListener("keyup", e => {
 });
 
 var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
-  backgroundColor: 0x1099bb
+  //backgroundColor: 0x1099bb
+  backgroundColor: 0xffffff
 });
 
 document.body.appendChild(app.view);
 
 const loader = PIXI.loader;
 const sprites = {};
-loader.add("drop", "droplette-faded.png");
+loader.add("drop", "droplette-dark.png").add("fallingdrop","dropspritesheet.json");
+
+// create a new background sprite
+var background = new PIXI.Sprite.fromImage('background.png');
+background.width = 1600;
+background.height = 1200;
+app.stage.addChild(background);
+
+
 
 loader.onProgress.add(() => {}); // called once per loaded/errored file
 loader.onError.add(() => {}); // called once per errored file
 loader.onLoad.add(() => {}); // called once per loaded file
 
+loader.load((loader, resources) => {
+console.log("A");
+    sprites.drop = new PIXI.Sprite(resources.drop.texture);
+    let sheet = PIXI.loader.resources["fallingdrop"].spritesheet;
+    sprites.animatedDrop = new PIXI.extras.AnimatedSprite(sheet.animations["droplette-dark-original"]);
+    sprites.animatedDrop.animationSpeed = 0.2;
+    sprites.animatedDrop.play();
+    app.stage.addChild(sprites.animatedDrop);    
+});
+
 function startGame() {
-  app.stage.addChild(sprites.drop);
-  sprites.drop.anchor.set(0.5);
-  sprites.drop.x = app.screen.width / 2;
-  sprites.drop.y = sprites.drop.height / 2;
+console.log("B");
+console.log(sprites);
+  app.stage.addChild(sprites.animatedDrop);
+  sprites.animatedDrop.anchor.set(0.5);
+  sprites.animatedDrop.x = app.screen.width / 2;
+  sprites.animatedDrop.y = sprites.animatedDrop.height / 2;
+
 
   app.ticker.add(function(delta) {
-    sprites.drop.rotation += 0.001 * delta;
-    sprites.drop.position.y += 1 * delta;
+    //sprites.animatedDrop.rotation += 0.1 * delta;
+    sprites.animatedDrop.position.y += 1 * delta;
     const speed = window.innerWidth / 300;
     if (keyboard["ArrowLeft"]) {
-      sprites.drop.position.x -= speed * delta;
+      sprites.animatedDrop.position.x -= speed * delta;
     }
     if (keyboard["ArrowRight"]) {
-      sprites.drop.position.x += speed * delta;
+      sprites.animatedDrop.position.x += speed * delta;
+    }
+    if (keyboard["ArrowDown"]) {
+      sprites.animatedDrop.position.y += speed * delta; 
+    }
+    if (keyboard["ArrowUp"]) {
+      sprites.animatedDrop.position.y -= speed*0.1 * delta; 
     }
   });
 }
 
 loader.onComplete.add(startGame); // called once when the queued resources all load.
 
-loader.load((loader, resources) => {
-    sprites.drop = new PIXI.Sprite(resources.drop.texture);
-});
