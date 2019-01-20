@@ -1,0 +1,55 @@
+{"frames": {
+
+"droplette-dark-original.png":
+{
+	"frame": {"x":640,"y":1,"w":150,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":35,"w":150,"h":187},
+	"sourceSize": {"w":256,"h":256}
+},
+"droplette-dark-original2.png":
+{
+	"frame": {"x":320,"y":1,"w":160,"h":240},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":16,"w":160,"h":240},
+	"sourceSize": {"w":256,"h":256}
+},
+"droplette-dark-original3.png":
+{
+	"frame": {"x":153,"y":1,"w":165,"h":240},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":16,"w":165,"h":240},
+	"sourceSize": {"w":256,"h":256}
+},
+"droplette-dark-original4.png":
+{
+	"frame": {"x":1,"y":1,"w":150,"h":243},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":13,"w":150,"h":243},
+	"sourceSize": {"w":256,"h":256}
+},
+"droplette-dark-original5.png":
+{
+	"frame": {"x":482,"y":1,"w":156,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":24,"w":156,"h":232},
+	"sourceSize": {"w":256,"h":256}
+}},
+"animations": {
+	"droplette-dark-original": ["droplette-dark-original2.png","droplette-dark-original3.png","droplette-dark-original4.png","droplette-dark-original5.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dropspritesheet.png",
+	"format": "RGBA8888",
+	"size": {"w":791,"h":245},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cb6a3832a736f4c53ce394b41fdf77c8:e85a1f7c8096d852af47874092f4ee94:f57ce768caf4a7965cfa64a1bd4cd5d1$"
+}
+}
