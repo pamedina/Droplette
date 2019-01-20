@@ -225,7 +225,7 @@ let script = {
     "d:happy Now, as a fall from the sky, imagine what consent looks like and means to you!",
     {
       Choice: {
-        Dialog: "d:happy Ready to play?",
+        Dialog: "d:happy Ready to fly?",
         Yes: {
           Text: "Yes",
           Do: "jump Yes"
@@ -240,7 +240,7 @@ let script = {
 
   Yes: ["d:happy Great! Here we goo...", pixiGame.pixiResume, "jump Played"],
 
-  Played: ["scene snowy", "d:happy You did it!", "Thanks for playing!", "end"],
+  Played: ["scene snowy", "d:happy You did it!", "Thanks for falling with me!", "end"],
 
   No: ["d:happy That's Ok. Maybe another time...", "end"]
 };
