@@ -6,6 +6,7 @@ function lerp(a, b, t) {
 
 const pixiGame = {
   pixiStart() {
+    this.fallCount = 0;
     this.app = new PIXI.Application(window.innerWidth, window.innerHeight, {
       //backgroundColor: 0x1099bb
       backgroundColor: 0xffffff
@@ -92,7 +93,7 @@ const pixiGame = {
       }
       const squeezed = 0.8;
       const long = 1.15;
-      if (keyboard["ArrowDown"]) {
+      if (keyboard["s"]) {
         sprites.animatedDrop.scale.x = lerp(
           sprites.animatedDrop.scale.x,
           squeezed,
@@ -121,9 +122,9 @@ const pixiGame = {
         sprites.animatedDrop.position.y >
         window.innerHeight + sprites.animatedDrop.height / 2
       ) {
-        this.finished = true;
-        //	sprites.animatedDrop.position.y =
-        //		-sprites.animatedDrop.height / 2;
+        this.fallCount += 1;
+        this.finished = this.fallCount > 5;
+        sprites.animatedDrop.position.y = -sprites.animatedDrop.height / 2;
       }
     };
     this.app.ticker.add(this.animatedDropTick);
@@ -238,9 +239,14 @@ let script = {
     }
   ],
 
-  Yes: ["d:happy Great! Here we goo...", pixiGame.pixiResume, "jump Played"],
+    Yes: ["d:happy Great! Here we goo...\n (Press a, s, and d to fly!)", pixiGame.pixiResume, "jump Played"],
 
-  Played: ["scene snowy", "d:happy You did it!", "Thanks for falling with me!", "end"],
+  Played: [
+    "scene snowy",
+    "d:happy You did it!",
+    "d:happy Thanks for falling with me!",
+    "end"
+  ],
 
   No: ["d:happy That's Ok. Maybe another time...", "end"]
 };
