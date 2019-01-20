@@ -1,3 +1,6 @@
+function lerp(a, b, t) {
+  return (1 - t) * a + b * t;
+}
 const keyboard = {};
 window.addEventListener("keydown", e => {
   keyboard[e.key] = true;
@@ -64,8 +67,17 @@ console.log(sprites);
     if (keyboard["ArrowUp"]) {
       sprites.animatedDrop.position.y -= speed*0.1 * delta; 
     }
+    const squeezed = 0.8;
+    const long = 1.15;
+    if (keyboard["ArrowDown"]) {
+      sprites.drop.scale.x = lerp(sprites.drop.scale.x, squeezed, 0.3);
+      sprites.drop.scale.y = lerp(sprites.drop.scale.y, long, 0.3);
+      sprites.drop.position.y += speed * delta;
+    } else {
+      sprites.drop.scale.x = lerp(sprites.drop.scale.x, 1, 0.3);
+      sprites.drop.scale.y = lerp(sprites.drop.scale.y, 1, 0.3);
+    }
   });
 }
 
 loader.onComplete.add(startGame); // called once when the queued resources all load.
-
