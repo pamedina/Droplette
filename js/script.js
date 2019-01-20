@@ -198,7 +198,7 @@ const images = {
 
 // Define the backgrounds for each scene.
 const scenes = {
-  snowy: "snowy.jpg"
+  snowy: "background2.jpg"
 };
 
 // Define the Characters

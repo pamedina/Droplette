@@ -49,7 +49,7 @@ let engine = {
 	"AutoSaveLabel": "AutoSave_",
 
 	// Turn main menu on/off; Default: true *
-	"ShowMenu": true,
+	"ShowMenu": false,
 
 	// Turn image preloading on/off, Default: true
 	"Preload": true,
